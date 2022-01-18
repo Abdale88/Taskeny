@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Role extends Model {}
+class Task extends Model {}
 
-Role.init(
+Task.init(
     {
         id:{
           type: DataTypes.INTEGER,
@@ -30,6 +30,6 @@ Role.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'role',
+        modelName: 'task',
     }
 )
