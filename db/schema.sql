@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS tasken_db;
+CREATE DATABASE tasken_db;
