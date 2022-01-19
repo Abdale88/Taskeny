@@ -33,3 +33,5 @@ UserRole.belongsTo(Role, {
     foreignKey: 'role_id',
     onDelete: 'CASCADE'
 });
+
+module.exports = {User, Role, Task, UserRole}
