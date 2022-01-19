@@ -33,3 +33,5 @@ Role.init(
         modelName: 'role',
     }
 )
+
+module.exports = Role;
