@@ -11,7 +11,7 @@ Task.init(
           primaryKey: true,
           autoIncrement: true
         },
-        task: {
+        title: {
             type: DataTypes.STRING,
             validate: {
                 is: ['^[a-z]+$','i'],
