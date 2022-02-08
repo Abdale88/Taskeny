@@ -13,9 +13,9 @@ Task.init(
         },
         title: {
             type: DataTypes.STRING,
-            validate: {
-                is: ['^[a-z]+$','i'],
-            }
+            // validate: {
+            //     is: ['^[a-z]+$','i'],
+            // }
         },
         user_id: {
             type: DataTypes.INTEGER,

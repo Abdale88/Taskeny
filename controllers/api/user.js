@@ -4,18 +4,8 @@ const {User, Role, Task, UserRole} = require('../../models');
 router.get('/', async(req, res) =>{
     try {
         const userData = await User.findAll({
-            include:[{
-                model: Task,
-            }],
-            include: [{
-                model: UserRole,
-                include: [
-                    {
-                        model: Role,
-
-                    },
-                ],
-            }],
+            include: [{model: UserRole, include:[{model: Role}]}],
+            include: [{model: Task}],
         });
         if(!userData){
             res.status(404).json({message: 'No users at all'});
