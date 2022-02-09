@@ -16,6 +16,7 @@ UserRole.init(
            references: {
                model: 'user',
                key: 'id',
+               unique: false
            }
        },
        role_id: {
@@ -23,6 +24,7 @@ UserRole.init(
         references: {
             model: 'role',
             key: 'id',
+            unique: false
         }
     }
     },

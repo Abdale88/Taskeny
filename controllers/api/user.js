@@ -4,8 +4,15 @@ const {User, Role, Task, UserRole} = require('../../models');
 router.get('/', async(req, res) =>{
     try {
         const userData = await User.findAll({
-            include: [{model: UserRole, include:[{model: Role}]}],
-            include: [{model: Task}],
+            include: [{
+                model: UserRole,
+                attributes:{exclude:['user_id', 'userId']}
+            }, 
+            {
+                model: Task,
+                attributes: {exclude: ['user_id']}
+
+               }],
         });
         if(!userData){
             res.status(404).json({message: 'No users at all'});
@@ -22,7 +29,7 @@ router.get('/:id', async(req, res) =>{
         const userData = await User.findByPk(req.params.id, {
             include: [
                 {
-                model: Task
+                model: Task,  attributes: {exclude: ['title']}
                 },
             ],
             include: [{
@@ -30,6 +37,8 @@ router.get('/:id', async(req, res) =>{
                 include: [
                     {
                         model: Role,
+                        attributes:{include:['id', 'role_id']}
+                        // attributes: {exclude: ['password']},
                     },
                 ],
             }],
