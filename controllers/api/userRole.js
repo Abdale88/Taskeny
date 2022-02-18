@@ -2,6 +2,16 @@ const router = require('express').Router();
 const res = require('express/lib/response');
 const {UserRole, User, Role} = require('../../models');
 
+
+router.post('/', async(req, res) =>{
+    try{
+        const userData = await  UserRole.create(req.body);
+        res.status(200).json(userData)
+    }catch(err){
+        res.status(500).json(err)
+    }
+});
+
 router.get('/', async(req, res) => {
     try {
         const userData = await UserRole.findAll({
@@ -41,13 +51,21 @@ router.get('/:id', async(req, res) =>{
     }
 })
 
-router.post('/', async(req, res) =>{
-    try{
-        const userData = await  UserRole.create(req.body);
-        res.status(200).json(userData)
-    }catch(err){
+router.delete('/:id', async(req, res) =>{
+    try {
+        const userData = await UserRole.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
+        if(!userData){
+            res.status(404).json({message: "No Role Found With That ID"})
+        }
+        res.status(200).json(userData);
+    } catch (err) {
         res.status(500).json(err)
     }
-});
+})
+
 
 module.exports = router;

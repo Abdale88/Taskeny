@@ -38,4 +38,21 @@ router.post('/', async(req, res) =>{
     }
 })
 
+router.delete('/:id', async(req, res) =>{
+    try {
+        const userData = await Task.destroy({
+            where:{
+                id: req.params.id
+            }
+        })
+        if(!userData){
+            res.status(404).json({message: "No Role Found With That ID"})
+        }
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+
 module.exports = router;

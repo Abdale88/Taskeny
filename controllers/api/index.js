@@ -4,7 +4,7 @@ const taskRoutes = require('./task');
 const roleRoutes = require('./role');
 const userRoleRoutes = require('./userRole');
 
-router.use('/user', userRoutes);
+router.use('/users', userRoutes);
 router.use('/task', taskRoutes);
 router.use('/role', roleRoutes);
 router.use('/userRole', userRoleRoutes);
